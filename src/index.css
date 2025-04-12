@@ -9,6 +9,7 @@ body {
   color: #d9d9d9;
   padding: 20px;
 }
+
 .container {
   max-width: 600px;
   width: 100%;
@@ -17,9 +18,11 @@ body {
   align-items: center;
   margin: 0 auto;
 }
+
 header {
   text-align: center;
 }
+
 header > h1 {
   font-size: 30px;
   font-weight: 500;
@@ -34,8 +37,10 @@ p {
   margin: 0 auto;
   color: #8e8e8e;
 }
+
 section.status-section {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 85px;
   border-radius: 4px;
   padding: 10px 0;
@@ -44,7 +49,9 @@ section.status-section {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: center;
 }
+
 section.status-section.won {
   background-color: #10a95b;
 }
@@ -52,6 +59,17 @@ section.status-section.won {
 section.status-section.lost {
   background-color: #ba2a2a;
 }
+
+section.status-section.farewell {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
+}
+
+section.status-section > p.farewell-message {
+  font-style: italic;
+  font-weight: 400;
+}
+
 section.status-section > h2 {
   color: #f9f4da;
   font-weight: 500;
@@ -66,6 +84,7 @@ section.status-section > p {
   margin: 0;
   max-width: 400px;
 }
+
 .languages {
   display: flex;
   flex-wrap: wrap;
@@ -74,6 +93,7 @@ section.status-section > p {
   text-align: center;
   gap: 2px;
 }
+
 .languages > span {
   border-radius: 6px;
   font-size: 15px;
@@ -98,14 +118,15 @@ span.chip.lost::before {
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.7);
 }
-.wordbox {
+
+section.wordbox {
   display: flex;
   justify-content: center;
   margin-block: 30px;
   gap: 2px;
 }
 
-.wordbox > span {
+section.wordbox > span {
   font-size: 20px;
   font-weight: 700;
   color: #f9f4da;
@@ -119,6 +140,10 @@ span.chip.lost::before {
   border-bottom: 2px solid #f9f4da;
 }
 
+section.wordbox > span.missed-letter {
+  color: #ec5d49;
+}
+
 .keyboard {
   display: flex;
   justify-content: center;
@@ -129,6 +154,7 @@ span.chip.lost::before {
   margin: 0 auto;
   margin-bottom: 25px;
 }
+
 section.keyboard > button {
   width: 50px;
   height: 50px;
@@ -141,6 +167,12 @@ section.keyboard > button {
   border: 1px solid #d7d7d7;
   cursor: pointer;
 }
+
+section.keyboard > button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 section.keyboard > button.correct {
   background-color: #10a95b;
 }
@@ -148,6 +180,7 @@ section.keyboard > button.correct {
 section.keyboard > button.wrong {
   background-color: #ec5d49;
 }
+
 button.new-game {
   background-color: #11b5e5;
   border: 1px solid #d7d7d7;
@@ -161,4 +194,111 @@ button.new-game {
   font-family: 'Hanken Grotesk', Arial, sans-serif;
   font-size: 18px;
   font-weight: 600;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  header > h1 {
+    font-size: 25px;
+  }
+
+  .languages > span {
+    width: 70px;
+    font-size: 14px;
+  }
+
+  .wordbox > span {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .keyboard > button {
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+  }
+
+  button.new-game {
+    width: 200px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  header > h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    max-width: 280px;
+  }
+
+  .languages > span {
+    width: 60px;
+    font-size: 12px;
+  }
+
+  .wordbox > span {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .keyboard > button {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  button.new-game {
+    width: 180px;
+    height: 30px;
+    font-size: 14px;
+  }
 }
